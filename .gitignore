@@ -1,0 +1,24 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# Editors
+.idea/
+.vscode/
+*.swp
+*~
+
+# Agent / tool scratch
+.claude/
+.cursor/
+*.log
+
+# Secrets — never commit. Contracts hold shapes, not credentials.
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.keystore
+
+# Add language and platform ignores when source is added.

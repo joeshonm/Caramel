@@ -1,0 +1,19 @@
+-- caramel — server-side schema.
+-- Authoritative for anything persisted server-side. 03-data.md explains and constrains
+-- this file; where the two disagree, this file wins.
+--
+-- Conventions (adjust, then keep):
+--   snake_case identifiers; plural table names
+--   surrogate primary key `id`; natural keys get a unique constraint
+--   timestamps are UTC, `created_at` / `updated_at`, not null
+--   deletes are soft via `deleted_at` unless stated otherwise
+--
+-- Migrations: see 03-data.md "Migrations".
+
+-- FILL: replace with real tables.
+-- CREATE TABLE examples (
+--   id          UUID PRIMARY KEY,
+--   created_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+--   updated_at  TIMESTAMPTZ NOT NULL DEFAULT now(),
+--   deleted_at  TIMESTAMPTZ
+-- );

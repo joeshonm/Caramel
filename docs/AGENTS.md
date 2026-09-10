@@ -1,0 +1,136 @@
+# AGENTS.md — read this first, in full
+
+You are implementing **caramel**. This directory is the specification. Code that
+contradicts these documents is wrong, even if it works.
+
+---
+
+## 1. Platform declaration
+
+```yaml
+project: caramel
+platforms: [PLATFORM]     # e.g. [web] | [ios] | [web, ios, android] | [desktop]
+mode: UNSET               # single | multi  — must match the length of `platforms`
+```
+
+`mode` is not decoration. It changes how you resolve every subsequent document:
+
+| `mode`   | Where platform decisions live                                    | `docs/platforms/`        |
+| -------- | ---------------------------------------------------------------- | ------------------------ |
+| `single` | In the final `## Platform bindings — <platform>` section of each core doc | **Does not exist.** Do not look for it. Its absence is expected, not an error. |
+| `multi`  | In `docs/platforms/<platform>.md`, one overlay per platform      | Exists. Load exactly one. |
+
+If `mode: UNSET`, this repository has not been initialised for a project yet.
+Stop and ask the human to run `scripts/init-project.sh` or fill in this block by
+hand. Do not guess a platform and do not begin implementation.
+
+---
+
+## 2. Reading order
+
+1. This file, completely.
+2. `01-product.md` — always. You cannot judge a tradeoff without knowing the non-goals.
+3. The core docs relevant to your task (see routing table below).
+4. **In `multi` mode only:** exactly one overlay from `docs/platforms/`.
+5. Any `contracts/` file referenced by the docs you just read.
+
+Do not read every document for every task. Do not read a second overlay.
+
+### Routing table
+
+| Your task involves                                    | Read                                          |
+| ----------------------------------------------------- | --------------------------------------------- |
+| Scope, priorities, "should we build X"                | `01-product.md`                               |
+| Layers, modules, dependency direction, new subsystem  | `02-architecture.md`                          |
+| Domain types, persistence, caching, state ownership   | `03-data.md`, `contracts/schema.sql`          |
+| API calls, auth, errors, retries, offline             | `04-networking.md`, `contracts/openapi.yaml`, `contracts/errors.md` |
+| Any user-visible surface, styling, copy               | `05-design.md`, `contracts/tokens.json`       |
+| Naming, file placement, "where does this go"          | `06-conventions.md`                           |
+| What to build next, whether a milestone is done       | `07-buildplan.md`                             |
+| "Why is it done this way" / reversing a past decision | `decisions/`                                  |
+
+---
+
+## 3. Resolution order
+
+When two sources disagree, the higher entry wins:
+
+1. A direct instruction from the human in the current conversation.
+2. `contracts/` — machine-readable files are the source of truth for their subject.
+   If `openapi.yaml` and prose in `04-networking.md` conflict, the schema wins and
+   the prose is a bug. Report it.
+3. The loaded platform overlay, **but only where it declares an override by name**
+   (see §4).
+4. Core docs `01`–`07`.
+5. `decisions/` — records rationale. It explains the core docs; it does not outrank them.
+6. Your own priors and framework conventions. Lowest. If a core doc contradicts the
+   idiomatic approach for your framework, the core doc wins.
+
+Nothing in this repository is an invitation to improvise. If a needed decision is
+absent from all of the above, stop and ask. A wrong guess written into code costs
+more than a question.
+
+---
+
+## 4. Overrides must be declared
+
+An overlay may only contradict a core doc by naming what it is overriding:
+
+```markdown
+> **Overrides** `03-data.md` §"Cache lifetime": iOS retains cached media for 30 days,
+> not 7, because cellular re-fetch is expensive.
+```
+
+An undeclared contradiction in an overlay is a documentation bug. Follow the core
+doc and report the conflict. Being platform-specific is not by itself permission to
+diverge from the core.
+
+---
+
+## 5. Scope boundaries
+
+**`multi` mode only.** A task scoped to one platform may modify:
+
+- that platform's source tree
+- `docs/contracts/` (with the change called out in your summary, since every other
+  platform is affected)
+
+Modifying another platform's source tree requires stopping and asking first, even
+when the change is small, obviously correct, or would make your own change cleaner.
+"I refactored the shared helper while I was in there" is the failure this rule exists
+to prevent.
+
+**Overlays may not reference each other.** No "same as web, except…". If a rule holds
+for more than one platform, move it into the core doc. This is what stops two overlays
+from silently becoming two independent, drifting specifications.
+
+---
+
+## 6. Promoting from `single` to `multi`
+
+A mechanical procedure. You may execute steps 1–4 yourself when asked.
+
+1. For each core doc `01`–`07`, cut its trailing `## Platform bindings — <platform>`
+   section into `docs/platforms/<platform>.md`, preserving the doc's own headings as
+   subsections so provenance survives.
+2. Copy `_templates/platform-overlay.md` to `docs/platforms/<new-platform>.md` and
+   fill it in.
+3. Update the `platforms` list and set `mode: multi` in §1 above.
+4. Delete the now-empty `## Platform bindings` headings from the core docs.
+5. **Human review required.** Re-read each core doc and check that every remaining
+   claim is genuinely platform-neutral. Some will not be. This step is judgement, not
+   mechanics, and is the actual work of the migration.
+
+---
+
+## 7. Reporting back
+
+End every non-trivial task with:
+
+- what you built, in one or two lines
+- which documents you read
+- every assumption you made where the docs were silent
+- any conflict, gap, or staleness you hit
+
+The last two are the most valuable output you produce. They are how this
+specification gets fixed. Do not smooth them over.
