@@ -9,6 +9,8 @@ The design rationale is in `docs/decisions/ADR-0001-agent-facing-doc-structure.m
 ## Layout
 
 ```
+CLAUDE.md              import shim — Claude Code reads this, not AGENTS.md
+HANDOFF.md             session context; delete once its open items are resolved
 docs/
   AGENTS.md            entry point — routing table, resolution order, scope rules
   01-product.md        scope, users, non-goals
@@ -63,3 +65,19 @@ Two habits keep this useful over time. Treat an agent's reported assumptions as 
 list for the docs — every assumption is a place the specification was silent. And when you
 find yourself correcting the same thing twice in review, the fix belongs in `06-conventions.md`
 rather than in another review comment.
+
+## A note on Claude Code
+
+Claude Code loads `CLAUDE.md` from the project root at session start; it does not read
+`AGENTS.md`. The root `CLAUDE.md` here is a one-line `@docs/AGENTS.md` import plus a few
+Claude Code-specific notes, which keeps a single specification serving both Claude Code and
+any other agent that looks for `AGENTS.md`.
+
+Two things to avoid: importing the core docs into `CLAUDE.md` (imports load at launch, which
+defeats the routing table and spends context on documents most tasks don't need), and
+letting `CLAUDE.md` plus its import grow past ~200 lines, where adherence starts to drop.
+The current pair is about 160.
+
+Verify it loaded with `/context` in a session and check the **Memory files** list.
+
+Source: https://code.claude.com/docs/en/memory
