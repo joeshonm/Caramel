@@ -48,7 +48,7 @@ compliance requirements, hard technology mandates. If a constraint is negotiable
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- In `single` mode, product decisions that are true only because of the platform go
 here: store review requirements, browser support floor, offline expectations, install

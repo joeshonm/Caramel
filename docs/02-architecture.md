@@ -60,7 +60,7 @@ bitten by. Explicit prohibitions outperform implied ones. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- Framework choice, project/target layout, build system, module boundaries the platform
 imposes, lifecycle and process model, threading primitives. -->

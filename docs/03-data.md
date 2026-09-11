@@ -49,7 +49,7 @@ values that should be derived and then drifting out of sync. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- Storage engine and library, on-device encryption, background refresh limits, quota
 behaviour, local schema if it diverges from the server's. -->

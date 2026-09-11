@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: caramel API
+  title: CARAMEL_PROJECT API
   version: 0.0.0
   description: >-
     Authoritative contract for endpoints and payloads. Replace this stub with the real

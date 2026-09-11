@@ -1,4 +1,4 @@
-# Platform overlay — PLATFORM
+# Platform overlay — CARAMEL_PLATFORM
 
 Deltas only. Anything true for every platform belongs in a core doc, not here.
 

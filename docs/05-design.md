@@ -64,7 +64,7 @@ than it matches adjectives. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- Native idioms to honour, navigation chrome, platform typography defaults, gesture
 conventions, per-platform token emitters. -->

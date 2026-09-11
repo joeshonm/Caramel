@@ -56,7 +56,7 @@ with cached state. Omit if not applicable, but say so. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- HTTP client library, certificate pinning, cookie vs header auth, CORS, background
 transfer APIs, connectivity detection, platform-imposed request limits. -->

@@ -55,7 +55,7 @@ beside each. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- Language style guide, linter and formatter config, package manager, platform-specific
 file naming. -->

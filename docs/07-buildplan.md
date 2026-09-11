@@ -36,7 +36,7 @@ from either implementing it early or assuming it was forgotten. -->
 
 ---
 
-## Platform bindings — PLATFORM
+## Platform bindings — CARAMEL_PLATFORM
 
 <!-- Toolchain setup, signing, simulator/emulator/browser targets, distribution steps,
 platform-specific milestone gates. -->

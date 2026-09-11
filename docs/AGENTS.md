@@ -1,6 +1,6 @@
 # AGENTS.md — read this first, in full
 
-You are implementing **caramel**. This directory is the specification. Code that
+You are implementing **CARAMEL_PROJECT**. This directory is the specification. Code that
 contradicts these documents is wrong, even if it works.
 
 ---
@@ -8,8 +8,8 @@ contradicts these documents is wrong, even if it works.
 ## 1. Platform declaration
 
 ```yaml
-project: caramel
-platforms: [PLATFORM]     # e.g. [web] | [ios] | [web, ios, android] | [desktop]
+project: CARAMEL_PROJECT
+platforms: [CARAMEL_PLATFORM]     # e.g. [web] | [ios] | [web, ios, android] | [desktop]
 mode: UNSET               # single | multi  — must match the length of `platforms`
 ```
 

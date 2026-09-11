@@ -1,4 +1,4 @@
--- caramel — server-side schema.
+-- CARAMEL_PROJECT — server-side schema.
 -- Authoritative for anything persisted server-side. 03-data.md explains and constrains
 -- this file; where the two disagree, this file wins.
 --

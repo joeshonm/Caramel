@@ -31,21 +31,34 @@ LIST="$(printf '%s, ' "${PLATFORMS[@]}" | sed 's/, $//' | tr -d ' ')"
 # Portable in-place sed (GNU and BSD).
 sedi() { if sed --version >/dev/null 2>&1; then sed -i "$@"; else sed -i '' "$@"; fi; }
 
+# Escape a string for use on the right-hand side of s///: backslash, the / delimiter,
+# and & (which sed expands to the matched text). Without this, a project named "A&B"
+# stamps itself as "AcaramelB".
+rhs() { printf '%s' "$1" | sed -e 's/[\\/&]/\\&/g'; }
+
+NAME_RHS="$(rhs "$NAME")"
+PRIMARY_RHS="$(rhs "$PRIMARY")"
+LIST_RHS="$(rhs "$LIST")"
+
 echo "Project : $NAME"
 echo "Platform: $LIST"
 echo "Mode    : $MODE"
 echo
 
-find "$DOCS" -type f \( -name '*.md' -o -name '*.yaml' -o -name '*.json' -o -name '*.sql' \) \
-  -not -path "$DOCS/_templates/*" -print0 |
-  while IFS= read -r -d '' f; do
-    sedi "s/caramel/$NAME/g" "$f"
-    sedi "s/PLATFORM/$PRIMARY/g" "$f"
-  done
+# CARAMEL_PROJECT / CARAMEL_PLATFORM are distinct placeholder tokens rather than the
+# literal words "caramel" and "PLATFORM", so substitution cannot touch prose that merely
+# mentions the template by name (ADR-0001 discussing caramel, say, or the word "platform"
+# in a sentence). Rename the template freely; only these tokens are load-bearing.
+while IFS= read -r -d '' f; do
+  sedi "s/CARAMEL_PROJECT/$NAME_RHS/g" "$f"
+  sedi "s/CARAMEL_PLATFORM/$PRIMARY_RHS/g" "$f"
+done < <(find "$DOCS" "$ROOT/README.md" -type f \
+  \( -name '*.md' -o -name '*.yaml' -o -name '*.json' -o -name '*.sql' \) \
+  -not -path "$DOCS/_templates/*" -print0)
 
-sedi "s/^platforms: .*/platforms: [$LIST]/" "$DOCS/AGENTS.md"
+sedi "s/^platforms: .*/platforms: [$LIST_RHS]/" "$DOCS/AGENTS.md"
 sedi "s/^mode: .*/mode: $MODE/" "$DOCS/AGENTS.md"
-sedi "s/^project: .*/project: $NAME/" "$DOCS/AGENTS.md"
+sedi "s/^project: .*/project: $NAME_RHS/" "$DOCS/AGENTS.md"
 
 if [ "$MODE" = multi ]; then
   mkdir -p "$DOCS/platforms"
@@ -55,7 +68,7 @@ if [ "$MODE" = multi ]; then
     if [ -e "$dest" ]; then
       echo "skip   docs/platforms/$p.md (exists)"
     else
-      sed "s/PLATFORM/$p/g" "$DOCS/_templates/platform-overlay.md" > "$dest"
+      sed "s/CARAMEL_PLATFORM/$(rhs "$p")/g" "$DOCS/_templates/platform-overlay.md" > "$dest"
       echo "create docs/platforms/$p.md"
     fi
   done
