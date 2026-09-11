@@ -29,6 +29,9 @@ Numbered, one line each. When you must trade off, protect the flows nearer the t
 
 ## Non-goals
 
+This section is "never, and why". Work that is real but simply not scheduled belongs in
+`07-buildplan.md` §Deferred. Nothing may appear in both (`AGENTS.md` §3).
+
 <!-- FILL: this is the highest-value section in this file. State what you are deliberately
 NOT building, and why. Without it an agent will helpfully add multi-tenancy, offline sync,
 i18n, and a plugin system to a single-user note app. -->

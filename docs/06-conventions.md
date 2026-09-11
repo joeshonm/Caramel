@@ -46,8 +46,11 @@ commands to run. -->
 
 ## Anti-patterns
 
-<!-- FILL: specific things you do not want to see, ideally with the correct alternative
-beside each. -->
+Owns code-level prohibitions for the whole project (`AGENTS.md` §3). Architectural
+prohibitions — layering and dependency violations — live in `02-architecture.md` §Forbidden.
+
+<!-- FILL: specific things you do not want to see, each with the correct alternative beside
+it. A prohibition with no alternative gets worked around rather than obeyed. -->
 
 | Do not | Do instead |
 | ------ | ---------- |

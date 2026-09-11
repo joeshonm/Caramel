@@ -24,8 +24,14 @@ of most state bugs an agent will introduce. -->
 
 ## Source of truth
 
+Owns reconciliation for the whole project (`AGENTS.md` §3): when two copies of the same
+state disagree, this section says which wins. §Caching below covers TTL and invalidation;
+`04-networking.md` §Realtime and §Offline cover transport and queueing. Neither decides a
+conflict.
+
 <!-- FILL: for each entity, is the server or the client authoritative? What happens when they
-disagree? Answer this before writing any sync or caching code. -->
+disagree — last-write-wins, server-wins, merge, prompt the user? Answer this before writing
+any sync or caching code. -->
 
 ## Local persistence
 

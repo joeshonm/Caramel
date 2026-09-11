@@ -31,8 +31,12 @@ feature work. It surfaces integration problems while they are still cheap. -->
 
 ## Deferred
 
+This section is "real, but not now". Work you will never build belongs in `01-product.md`
+§Non-goals. If an item moves from here to there, delete the row here (`AGENTS.md` §3).
+
 <!-- FILL: work that is real but explicitly not now. Keeping it visible here stops an agent
-from either implementing it early or assuming it was forgotten. -->
+from either implementing it early or assuming it was forgotten. Name the milestone each
+item attaches to, or it floats free and never gets scheduled. -->
 
 ---
 

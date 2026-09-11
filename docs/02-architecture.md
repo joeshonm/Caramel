@@ -44,8 +44,12 @@ what "done" means for a background task. -->
 
 ## Error strategy
 
-<!-- FILL: which errors are recoverable, which crash, which surface to the user and how.
-Where is the boundary that converts low-level failures into domain errors? -->
+Owns the recoverable/fatal split and the conversion boundary only. What a user sees when a
+request fails is owned by `04-networking.md` §Error handling (`AGENTS.md` §3).
+
+<!-- FILL: which errors are recoverable and which are fatal. Where is the boundary that
+converts low-level failures into domain errors? What crashes the process, and what is
+caught? Do not specify user-facing behaviour here. -->
 
 ## Testing strategy
 
@@ -54,9 +58,13 @@ possible. State what you deliberately do not test. -->
 
 ## Forbidden
 
-<!-- FILL: patterns that are out of bounds regardless of convenience. Singletons for mutable
-state, business logic in view code, direct network calls from UI, whatever you have been
-bitten by. Explicit prohibitions outperform implied ones. -->
+Architectural prohibitions only — violations of the layering and dependency rules above.
+General code prohibitions belong in `06-conventions.md` §Anti-patterns, which owns them
+(`AGENTS.md` §3). If a rule is not about layering, put it there.
+
+<!-- FILL: the architectural patterns that are out of bounds regardless of convenience.
+Business logic in view code, direct network calls from UI, a module reaching past a public
+surface. Explicit prohibitions outperform implied ones. -->
 
 ---
 

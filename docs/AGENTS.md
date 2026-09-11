@@ -45,7 +45,7 @@ Do not read every document for every task. Do not read a second overlay.
 | Domain types, persistence, caching, state ownership   | `03-data.md`, `contracts/schema.sql`          |
 | API calls, auth, errors, retries, offline             | `04-networking.md`, `contracts/openapi.yaml`, `contracts/errors.md` |
 | Any user-visible surface, styling, copy               | `05-design.md`, `contracts/tokens.json`       |
-| Naming, file placement, "where does this go"          | `06-conventions.md`                           |
+| Naming, file placement, "where does this go"          | `06-conventions.md`, and `02-architecture.md` §Module map for which module owns it |
 | What to build next, whether a milestone is done       | `07-buildplan.md`                             |
 | "Why is it done this way" / reversing a past decision | `decisions/`                                  |
 
@@ -61,10 +61,27 @@ When two sources disagree, the higher entry wins:
    the prose is a bug. Report it.
 3. The loaded platform overlay, **but only where it declares an override by name**
    (see §4).
-4. Core docs `01`–`07`.
+4. Core docs `01`–`07`, which rank equally with each other. Where two of them cover the
+   same decision, the owning doc below wins.
 5. `decisions/` — records rationale. It explains the core docs; it does not outrank them.
 6. Your own priors and framework conventions. Lowest. If a core doc contradicts the
    idiomatic approach for your framework, the core doc wins.
+
+### Topic ownership
+
+Some decisions are legitimately visible from more than one document. Exactly one owns each;
+the others describe their own slice and defer. If a non-owning doc contradicts the owner,
+the owner wins and the other is a bug to report (§7).
+
+| Topic | Owner | The others cover |
+| ----- | ----- | ---------------- |
+| What a user sees when a request fails | `04-networking.md` §Error handling, keyed to `contracts/errors.md`; strings in `05-design.md` §Error copy | `02` §Error strategy: only the recoverable/fatal/crash split and where failures convert to domain errors |
+| Prohibited patterns | `06-conventions.md` §Anti-patterns | `02` §Forbidden: architectural prohibitions only — layering and dependency violations |
+| Never building it vs. not building it yet | `01-product.md` §Non-goals is "never, and why"; `07-buildplan.md` §Deferred is "real, but not now" | An item may not appear in both. If it moves from Deferred to Non-goals, delete the Deferred row |
+| Reconciling cached, local, and server state | `03-data.md` §Source of truth | `03` §Caching: TTL and invalidation. `04` §Realtime and §Offline: transport mechanics and queue behaviour, not who wins a conflict |
+
+A collision not listed here is a gap in this table, not a licence to choose. Follow the doc
+whose routing-table entry (§2) matches your task, and report the collision (§7).
 
 Nothing in this repository is an invitation to improvise. If a needed decision is
 absent from all of the above, stop and ask. A wrong guess written into code costs
