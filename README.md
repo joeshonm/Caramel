@@ -1,4 +1,4 @@
-# CARAMEL_PROJECT
+# Caramel
 
 A base template for agent-facing architecture documentation. Copy this repository to start
 a new project, run the init script, fill in the docs, then point your coding agent at
@@ -53,12 +53,14 @@ git clone <this> my-project && cd my-project
 ./scripts/init-project.sh my-project web     # or: ios | android | desktop | "web,ios"
 ```
 
-The script stamps two placeholder tokens across `docs/` and this README: `CARAMEL_` +
-`PROJECT` and `CARAMEL_` + `PLATFORM` (written split here so this paragraph survives its
-own substitution). They are deliberately distinct from the words "caramel" and "platform",
+The script stamps two placeholder tokens throughout `docs/`: `CARAMEL_PROJECT` and
+`CARAMEL_PLATFORM`. They are deliberately distinct from the words "caramel" and "platform",
 so prose mentioning either — an ADR discussing the template, a sentence using the word
 "platform" — is left untouched. If you add a doc that needs the project or platform name
 filled in, write the token, not the word.
+
+This README is documentation of the template itself, not of the project you are building,
+so the script does not rewrite it. Replace it with your own.
 
 Then fill in the `<!-- FILL -->` markers, starting with `01-product.md` — particularly its
 non-goals, which is the section that does the most work in keeping an agent's scope honest.

@@ -49,10 +49,13 @@ echo
 # literal words "caramel" and "PLATFORM", so substitution cannot touch prose that merely
 # mentions the template by name (ADR-0001 discussing caramel, say, or the word "platform"
 # in a sentence). Rename the template freely; only these tokens are load-bearing.
+#
+# The root README documents the template, not the project being built, so it is not
+# walked. A new project replaces it outright.
 while IFS= read -r -d '' f; do
   sedi "s/CARAMEL_PROJECT/$NAME_RHS/g" "$f"
   sedi "s/CARAMEL_PLATFORM/$PRIMARY_RHS/g" "$f"
-done < <(find "$DOCS" "$ROOT/README.md" -type f \
+done < <(find "$DOCS" -type f \
   \( -name '*.md' -o -name '*.yaml' -o -name '*.json' -o -name '*.sql' \) \
   -not -path "$DOCS/_templates/*" -print0)
 
