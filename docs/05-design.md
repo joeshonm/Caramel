@@ -11,11 +11,17 @@ than "clean and modern", which is the default it would have produced anyway. -->
 
 ## Tokens
 
-Values live in `contracts/tokens.json`. Never hardcode a colour, spacing value, radius, or
-font size in component code — reference a token. If a needed token does not exist, add it to
-the contract rather than inlining a literal.
+Values live in `contracts/tokens.json`. Never hardcode a colour, spacing value, radius,
+elevation, or font size in component code — reference a token. If a needed token does not
+exist, add it to the contract rather than inlining a literal.
 
-<!-- FILL: name the scales you use and their steps: spacing, radius, elevation, type. -->
+The contract carries six scales: `color`, `space`, `radius`, `elevation`, `type`, `motion`.
+This list and the contract's top-level keys must agree; if they diverge, the contract wins
+and this line is the bug (`AGENTS.md` §3).
+
+<!-- FILL: state the steps of each scale and what each step is for. A step with no stated
+role gets used arbitrarily. If a scale is unused — a flat design needs no elevation beyond
+`none` — say so explicitly rather than leaving it, or an agent will find a use for it. -->
 
 ## Typography
 
@@ -49,7 +55,28 @@ component inventory will produce a new bespoke button per screen. -->
 ## Empty, loading, and error states
 
 <!-- FILL: the required treatment for each. These are the states most often omitted from a
-build, so specify them as first-class rather than as edge cases. -->
+build, so specify them as first-class rather than as edge cases. State the shape, not just
+the intent: skeleton or spinner, at what delay, does the error offer a retry, what occupies
+the space when a list is empty. "Handle the empty state" is not implementable; "empty list
+shows the section heading plus one line of muted body copy and no illustration" is. -->
+
+## Error copy
+
+`contracts/errors.md` is authoritative for error *codes*; this section is authoritative for
+the *string a user sees* for each one. Every code in that contract needs a row here, or an
+agent will invent the wording at the call site.
+
+<!-- FILL: one row per code in contracts/errors.md. Write the string, do not describe it —
+the agent copies what it sees here. Follow the rules in "Voice" below. Never surface the
+API's own `message` field; it is diagnostic. -->
+
+| Code | User-facing string | Recovery affordance |
+| ---- | ------------------ | ------------------- |
+| `unauthenticated` |  | |
+| `forbidden` |  | |
+| `not_found` |  | |
+| `rate_limited` |  | |
+| `internal` |  | |
 
 ## Accessibility
 

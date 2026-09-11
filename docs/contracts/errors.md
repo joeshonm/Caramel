@@ -31,6 +31,7 @@ breaking change for every platform.
 
 ## Rules
 
-- `message` is diagnostic. User-facing copy comes from `05-design.md`, keyed by `code`.
+- `message` is diagnostic. User-facing copy comes from `05-design.md` §"Error copy",
+  which carries one row per code in this table. Never display `message` directly.
 - An unrecognised code is treated as `internal` and reported, never swallowed.
 - `details` is advisory; never branch on it without a row above describing its shape.
