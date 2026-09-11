@@ -10,7 +10,7 @@ The design rationale is in `docs/decisions/ADR-0001-agent-facing-doc-structure.m
 
 ```
 CLAUDE.md              import shim — Claude Code reads this, not AGENTS.md
-LICENSE                GPL-3.0
+LICENSE                MIT
 docs/
   AGENTS.md            entry point — routing table, resolution order, scope rules
   01-product.md        scope, users, non-goals
