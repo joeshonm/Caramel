@@ -10,7 +10,6 @@ The design rationale is in `docs/decisions/ADR-0001-agent-facing-doc-structure.m
 
 ```
 CLAUDE.md              import shim — Claude Code reads this, not AGENTS.md
-HANDOFF.md             session context; delete once its open items are resolved
 docs/
   AGENTS.md            entry point — routing table, resolution order, scope rules
   01-product.md        scope, users, non-goals
@@ -55,6 +54,15 @@ git clone <this> my-project && cd my-project
 
 Then fill in the `<!-- FILL -->` markers, starting with `01-product.md` — particularly its
 non-goals, which is the section that does the most work in keeping an agent's scope honest.
+
+Two placeholders need a real toolchain before they mean anything, so deal with them once
+you have chosen one:
+
+- **`07-buildplan.md` milestone gates.** The doc requires each gate to be a command that
+  exits zero or an observable behaviour. The shipped milestones are placeholders; a gate
+  an agent cannot execute cannot tell it whether a milestone is done.
+- **`06-conventions.md` "definition of done".** It references commands that do not exist
+  yet. Replace them with your real test, lint, and build invocations.
 
 ## Using it
 

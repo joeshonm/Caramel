@@ -20,4 +20,3 @@ Repository conventions:
   is a bug to report, not a rule to follow.
 - Report every assumption made where the docs were silent (`AGENTS.md` §7). Those reports
   are how the specification gets fixed.
-- Delete `HANDOFF.md` once its open items are resolved.

@@ -121,6 +121,11 @@ A mechanical procedure. You may execute steps 1–4 yourself when asked.
    claim is genuinely platform-neutral. Some will not be. This step is judgement, not
    mechanics, and is the actual work of the migration.
 
+This procedure has only ever been exercised as far as `init-project.sh` automates it
+(steps 2–4). Step 1, cutting bindings sections across into overlays, and step 5 have never
+been run against filled-in docs. Expect to refine the procedure the first time, and report
+what you had to change (§7).
+
 ---
 
 ## 7. Reporting back
