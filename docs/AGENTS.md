@@ -123,25 +123,17 @@ from silently becoming two independent, drifting specifications.
 
 ---
 
-## 6. Promoting from `single` to `multi`
+## 6. Changing the platform list
 
-A mechanical procedure. You may execute steps 1–4 yourself when asked.
+Adding a platform to a `single`-mode project means moving each core doc's
+`## Platform bindings` content into `docs/platforms/<platform>.md` overlays and setting
+`mode: multi` in §1. There is deliberately no step-by-step procedure for this: the work is
+deciding which claims in the core docs are genuinely platform-neutral, which is judgement,
+not mechanics. Do it by hand, once, and expect to move some claims that turned out never to
+have been invariant.
 
-1. For each core doc `01`–`07`, cut its trailing `## Platform bindings — <platform>`
-   section into `docs/platforms/<platform>.md`, preserving the doc's own headings as
-   subsections so provenance survives.
-2. Copy `_templates/platform-overlay.md` to `docs/platforms/<new-platform>.md` and
-   fill it in.
-3. Update the `platforms` list and set `mode: multi` in §1 above.
-4. Delete the now-empty `## Platform bindings` headings from the core docs.
-5. **Human review required.** Re-read each core doc and check that every remaining
-   claim is genuinely platform-neutral. Some will not be. This step is judgement, not
-   mechanics, and is the actual work of the migration.
-
-This procedure has only ever been exercised as far as `init-project.sh` automates it
-(steps 2–4). Step 1, cutting bindings sections across into overlays, and step 5 have never
-been run against filled-in docs. Expect to refine the procedure the first time, and report
-what you had to change (§7).
+Keeping each bindings section filled in as you go is what makes this cheap. That is the
+whole reason `single` mode has the sections at all.
 
 ---
 

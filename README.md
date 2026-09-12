@@ -43,8 +43,8 @@ structure serve both cases: it tells the agent whether a missing overlay is a pr
 the expected state.
 
 Start in `single` even if you expect to expand. Keeping the bindings section filled in as
-you go costs nothing at write time and makes `AGENTS.md` §6 promotion a cut-and-paste
-instead of an excavation.
+you go costs nothing at write time and makes adding a platform later a matter of moving
+sections rather than excavating them.
 
 ## Getting started
 

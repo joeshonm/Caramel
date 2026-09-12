@@ -5,8 +5,8 @@
 #
 # One platform  -> single mode: bindings stay inline in the core docs.
 # Two or more   -> multi mode: overlays are generated in docs/platforms/ and you must
-#                  cut each core doc's "Platform bindings" section into them by hand
-#                  (AGENTS.md section 6, step 1). That step is judgement, not mechanics.
+#                  cut each core doc's "Platform bindings" section into them by hand.
+#                  That step is judgement, not mechanics (AGENTS.md section 6).
 
 set -euo pipefail
 

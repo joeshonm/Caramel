@@ -1,6 +1,6 @@
 # ADR-0001 — Agent-facing documentation structure
 
-- **Status:** accepted
+- **Status:** accepted, amended by ADR-0002
 - **Date:** 2026-09-10
 - **Affects:** all core docs, `AGENTS.md`
 
@@ -41,9 +41,12 @@ without touching invariants; auditing what is genuinely platform-specific.
 
 Makes hard, and this is the real cost: the invariant/binding split is a discipline. Sorting
 each claim into "true everywhere" or "true because of this platform" is a judgement call
-made on every write. Skipped, `single` mode degrades into a flat document and the promotion
-procedure in `AGENTS.md` §6 buys nothing. A project certain to stay single-platform forever
+made on every write. Skipped, `single` mode degrades into a flat document and adding a
+platform later becomes an excavation. A project certain to stay single-platform forever
 could reasonably drop the convention and accept the flat form.
+
+<!-- ADR-0002 withdrew the promotion procedure this paragraph originally cited. The cost
+described here is unchanged; only the thing it buys is now manual. -->
 
 ## Revisit when
 
