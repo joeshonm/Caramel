@@ -88,6 +88,7 @@ the owner wins and the other is a bug to report (§7).
 | Prohibited patterns | `06-conventions.md` §Anti-patterns | `02` §Forbidden: architectural prohibitions only — layering and dependency violations |
 | Never building it vs. not building it yet | `01-product.md` §Non-goals is "never, and why"; `07-buildplan.md` §Deferred is "real, but not now" | An item may not appear in both. If it moves from Deferred to Non-goals, delete the Deferred row |
 | Reconciling cached, local, and server state | `03-data.md` §Source of truth | `03` §Caching: TTL and invalidation. `04` §Realtime and §Offline: transport mechanics and queue behaviour, not who wins a conflict |
+| Styling | `05-design.md` §Tokens owns the values, `contracts/tokens.json` is authoritative | `06-conventions.md` §CSS: how stylesheets are written — specificity, scoping strategy, naming. It never names a value |
 
 A collision not listed here is a gap in this table, not a licence to choose. Follow the doc
 whose routing-table entry (§2) matches your task, and report the collision (§7).

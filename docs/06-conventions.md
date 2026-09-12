@@ -126,3 +126,41 @@ will invent an answer for each one it needs:
 | One exported thing per file, or many? | |
 | Where do shared types live? | |
 | `any` — permitted anywhere, or never? | |
+
+### CSS
+
+Applies to any project that ships stylesheets, whatever the framework.
+
+**Architectural principles, always in force.** Source: CSS Guidelines
+(https://cssguidelin.es), Harry Roberts. These hold regardless of how the project scopes
+its styles, and most are mechanically satisfied by a utility-first or component-scoped
+setup rather than requiring discipline:
+
+- Keep specificity as low as possible. Do not nest, qualify, or chain selectors.
+- No IDs in CSS. They are non-reusable and create specificity anomalies that later rules
+  can only beat with worse ones. IDs in HTML and JavaScript are fine.
+- `!important` proactively only — on a utility whose whole purpose is to win. Reactive
+  `!important`, added to defeat a rule you did not expect, means the architecture is
+  already wrong; fix the specificity instead.
+- One responsibility per rule. Compose small rules rather than extending large ones.
+
+**Scoping strategy — declare exactly one.** BEM naming, utility-first, CSS Modules, and
+framework-scoped styles all solve the same problem: making it impossible for one
+component's styles to leak into another. A project needs one of them. Running two is the
+failure this section exists to prevent, and it happens by accident — a utility-first
+project acquires a hand-written stylesheet, and neither convention holds any more.
+
+caramel does not prescribe which. It does require that you name it, because an agent with
+no scoping rule invents one per component.
+
+<!-- FILL: name the strategy and what it means concretely here. If utility-first, say
+which utilities are permitted and when a component class is warranted instead. If BEM or
+another naming convention, state the syntax. If the framework scopes styles for you, say
+so and say what happens when a style must escape that scope — that exception is where
+leakage starts. -->
+
+**Scoping strategy:** <one of: BEM | utility-first | CSS Modules | framework-scoped | other>
+
+Design *values* — colour, spacing, radius, elevation, type — are not settled here.
+`05-design.md` §Tokens owns them, and `contracts/tokens.json` is authoritative. This
+section governs how CSS is written; that one governs what values it may contain.
