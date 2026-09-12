@@ -25,7 +25,13 @@ docs/
   _templates/          platform overlay and ADR skeletons
 scripts/
   init-project.sh      stamp project name and platforms into a fresh copy
+  check-docs.sh        verify the specification agrees with itself
 ```
+
+`07-buildplan.md` requires every milestone gate to be a command that exits zero.
+`check-docs.sh` is that command for the specification itself: it resolves every
+cross-document reference, checks the design prose against `contracts/tokens.json` and
+`contracts/errors.md`, and holds `CLAUDE.md` to its line budget. Run it after editing docs.
 
 ## Two modes
 

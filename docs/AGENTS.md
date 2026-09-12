@@ -103,8 +103,8 @@ more than a question.
 An overlay may only contradict a core doc by naming what it is overriding:
 
 ```markdown
-> **Overrides** `03-data.md` §"Cache lifetime": iOS retains cached media for 30 days,
-> not 7, because cellular re-fetch is expensive.
+> **Overrides** `03-data.md` §Caching: iOS retains cached media for 30 days, not 7,
+> because cellular re-fetch is expensive.
 ```
 
 An undeclared contradiction in an overlay is a documentation bug. Follow the core

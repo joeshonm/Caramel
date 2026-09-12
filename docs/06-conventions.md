@@ -51,8 +51,10 @@ never be committed. -->
 commands to run. -->
 
 - [ ] Builds with no new warnings
+- [ ] New behaviour has a test; changed behaviour has an updated one
 - [ ] Tests pass: `<command>`
 - [ ] Lint and format pass: `<command>`
+- [ ] Specification is self-consistent: `./scripts/check-docs.sh`
 - [ ] No hardcoded design values
 - [ ] Loading, empty, and error states handled
 - [ ] Assumptions and gaps reported per `AGENTS.md` §7

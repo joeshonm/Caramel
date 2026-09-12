@@ -85,3 +85,4 @@ fi
 
 echo
 echo "Next: fill the FILL markers in docs/01-product.md, non-goals first."
+echo "Run ./scripts/check-docs.sh after editing docs; it verifies the spec agrees with itself."
