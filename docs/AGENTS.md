@@ -36,6 +36,11 @@ hand. Do not guess a platform and do not begin implementation.
 
 Do not read every document for every task. Do not read a second overlay.
 
+Nothing enforces this table. No tool checks that you consulted it, and an agent that reads
+everything will produce work that looks the same as one that routed correctly — until the
+context it wasted is context it needed. Treat it as binding anyway. When a task genuinely
+spans the whole set, say so in your report (§7) rather than routing to everything silently.
+
 ### Routing table
 
 | Your task involves                                    | Read                                          |
@@ -153,20 +158,15 @@ End every non-trivial task with:
 The last two are the most valuable output you produce. They are how this
 specification gets fixed. Do not smooth them over.
 
+Name the document and section each one belongs in — "assumed X; belongs in `03-data.md`
+§Caching, which does not say" is a defect someone can file. "I made some assumptions" is
+not. If no section is the right home, say that too: it means the gap is structural, and
+`reference/not-covered.md` is where it goes.
+
 ### What these documents do not prompt for
 
-The core docs cover what most projects need most of the time. The topics below are
-deliberately absent — not overlooked. If your project needs one, it has no home, and the
-right move is to add a section rather than scatter the decision across whichever documents
-happen to touch it.
-
-Deployment and release · CI, versioning, changelog, rollback, feature flags and runtime
-configuration · internationalisation and localisation · analytics and event taxonomy ·
-form validation rules · client-side state-management mechanism · navigation, routing, and
-deep-link structure · performance budgets beyond `01` §Success criteria · secrets handling
-beyond user credentials · data retention, PII classification, and deletion · code
-generation from `contracts/` · observability beyond request logging.
-
-Some are genuinely project-specific and belong in a filled-in document rather than a
-prompt. Others are simply gaps. Both are worth reporting: a topic listed here that you
-needed and had to invent is exactly the report described above.
+A number of topics are deliberately absent from `01`–`07` — deployment, CI, i18n,
+analytics, routing structure, secrets beyond user credentials, and others.
+`reference/not-covered.md` lists them with the doc that should own each one if your project
+needs it. Needing something on that list is a report under this section, not a licence to
+improvise.
