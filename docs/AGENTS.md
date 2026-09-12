@@ -44,7 +44,10 @@ Do not read every document for every task. Do not read a second overlay.
 | Layers, modules, dependency direction, new subsystem  | `02-architecture.md`                          |
 | Choosing a language, runtime, or framework            | `02-architecture.md` §Stack; `decisions/ADR-0003` if the choice is still open |
 | Domain types, persistence, caching, state ownership   | `03-data.md`, `contracts/schema.sql`          |
+| Images, video, audio, fonts, asset delivery           | `03-data.md` §Media and assets                |
 | API calls, auth, errors, retries, offline             | `04-networking.md`, `contracts/openapi.yaml`, `contracts/errors.md` |
+| Who may do what; roles, scopes, gated UI              | `04-networking.md` §Authorization             |
+| Adding or replacing a library                         | `06-conventions.md` §Dependencies             |
 | Any user-visible surface, styling, copy               | `05-design.md`, `contracts/tokens.json`       |
 | Naming, file placement, "where does this go"          | `06-conventions.md`, and `02-architecture.md` §Module map for which module owns it |
 | What to build next, whether a milestone is done       | `07-buildplan.md`                             |
@@ -149,3 +152,21 @@ End every non-trivial task with:
 
 The last two are the most valuable output you produce. They are how this
 specification gets fixed. Do not smooth them over.
+
+### What these documents do not prompt for
+
+The core docs cover what most projects need most of the time. The topics below are
+deliberately absent — not overlooked. If your project needs one, it has no home, and the
+right move is to add a section rather than scatter the decision across whichever documents
+happen to touch it.
+
+Deployment and release · CI, versioning, changelog, rollback, feature flags and runtime
+configuration · internationalisation and localisation · analytics and event taxonomy ·
+form validation rules · client-side state-management mechanism · navigation, routing, and
+deep-link structure · performance budgets beyond `01` §Success criteria · secrets handling
+beyond user credentials · data retention, PII classification, and deletion · code
+generation from `contracts/` · observability beyond request logging.
+
+Some are genuinely project-specific and belong in a filled-in document rather than a
+prompt. Others are simply gaps. Both are worth reporting: a topic listed here that you
+needed and had to invent is exactly the report described above.

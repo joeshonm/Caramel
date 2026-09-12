@@ -27,6 +27,19 @@ forbidden. -->
 <!-- FILL: what warrants a comment. Public API documentation requirements. A useful default
 is: comment why, never what. -->
 
+## Dependencies
+
+<!-- FILL: may an agent add a dependency without asking? Answer plainly — this is the
+single most common thing an agent does that nobody sanctioned. If the answer is "ask
+first", say what qualifies as small enough to skip asking, or the rule gets ignored under
+deadline. Name the libraries already chosen for common jobs (dates, HTTP, validation,
+testing), because an agent that cannot find yours will add a second one alongside it. State
+what disqualifies a candidate: unmaintained, wrong licence, too large, one-maintainer. -->
+
+| Job | Use | Not |
+| --- | --- | --- |
+|     |     |     |
+
 ## Commits and branches
 
 <!-- FILL: message format, branch naming, whether an agent may commit directly, what must
@@ -52,9 +65,12 @@ prohibitions — layering and dependency violations — live in `02-architecture
 <!-- FILL: specific things you do not want to see, each with the correct alternative beside
 it. A prohibition with no alternative gets worked around rather than obeyed. -->
 
-| Do not | Do instead |
-| ------ | ---------- |
-|        |            |
+| Do not | Do instead | Enforced by |
+| ------ | ---------- | ----------- |
+|        |            |             |
+
+`Enforced by` is a lint rule, a formatter, a CI check, or "review only". A prohibition list
+that nothing checks grows stale silently — the rules stay written down while the code drifts.
 
 ---
 

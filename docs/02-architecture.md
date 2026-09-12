@@ -28,9 +28,13 @@ in one line, or an agent will propose it again. -->
 <!-- FILL: name the pattern and its layers in one short list. Do not describe an
 architecture you are not going to enforce. -->
 
-| Layer | Responsibility | May depend on |
-| ----- | -------------- | ------------- |
-|       |                |               |
+| Layer | Responsibility | May depend on | Enforced by |
+| ----- | -------------- | ------------- | ----------- |
+|       |                |               |             |
+
+`Enforced by` is a lint rule, a CI check, a compiler boundary, or the honest answer
+"review only". A rule nobody checks is a preference, and an agent will eventually treat it
+as one. Writing "review only" is fine; leaving the cell blank is not.
 
 ## Dependency rules
 
@@ -47,9 +51,9 @@ hard rule and negotiate with a soft one. -->
 about. This is the single most useful section for preventing an agent from putting code in
 a plausible-but-wrong place. -->
 
-| Module | Owns | Must not know about |
-| ------ | ---- | ------------------- |
-|        |      |                     |
+| Module | Owns | Must not know about | Enforced by |
+| ------ | ---- | ------------------- | ----------- |
+|        |      |                     |             |
 
 ## Composition and dependency injection
 

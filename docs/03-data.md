@@ -38,6 +38,23 @@ any sync or caching code. -->
 <!-- FILL: what is stored locally and why. What survives restart, what survives reinstall,
 what must never be written to disk. Note anything sensitive and its required protection. -->
 
+## Media and assets
+
+Images, video, audio, fonts, and downloads. Distinct from §Local persistence because these
+are usually large, usually served from somewhere other than your API, and usually the
+dominant share of what a user actually downloads.
+
+<!-- FILL: for each kind of asset — where it is stored, how it is delivered, what
+transformation happens and when, and the size budget. Name the ceiling: "hero images under
+200KB after optimization" is checkable, "optimized images" is not. If large media is
+uploaded by a non-technical editor, say where it goes, since content tools rarely accept
+files this big. If the project has no media beyond a logo, say so explicitly and delete the
+table — otherwise an agent will build a pipeline you did not ask for. -->
+
+| Asset kind | Stored where | Delivered how | Transform | Budget |
+| ---------- | ------------ | ------------- | --------- | ------ |
+|            |              |               |           |        |
+
 ## Caching
 
 <!-- FILL: what is cached, keyed how, valid for how long, invalidated by what. If there is no

@@ -21,6 +21,21 @@ compression, timeouts. -->
 what happens on refresh failure. Be precise about the refresh race: concurrent 401s must not
 trigger concurrent refreshes. -->
 
+## Authorization
+
+Authentication proves who someone is; this section says what they may do.
+`contracts/errors.md` defines a `forbidden` response but not who receives one.
+
+<!-- FILL: the roles or scopes that exist, and what each may do. Then the client rule: does
+the UI hide an action the user cannot perform, show it disabled, or attempt it and surface
+the error? Pick one and apply it everywhere. State whether the client may decide anything
+on its own — normally it may not, and the server is the only authority. If everyone can do
+everything, say so; that is a real answer and it stops an agent inventing a role model. -->
+
+| Role or scope | May | May not |
+| ------------- | --- | ------- |
+|               |     |         |
+
 ## Request policy
 
 <!-- FILL: required headers, correlation/request IDs, idempotency keys for unsafe methods,
