@@ -10,13 +10,9 @@ Do not import the core docs (`docs/01`–`07`) into this file. They load at laun
 imported, which defeats the routing table and spends context on documents most tasks do
 not need.
 
-The core docs carry authoring guidance in HTML comments (`<!-- FILL: … -->`). Those are
-stripped from anything injected as memory, but remain visible when you open the file with
-the Read tool. Read the file; do not rely on the import.
+The core docs carry authoring guidance in HTML comments (`<!-- FILL: … -->`), which are
+stripped from the memory injection but visible via the Read tool. Open the file; do not
+rely on the import.
 
-Repository conventions:
-
-- `docs/contracts/` outranks prose in every core doc. Prose that disagrees with a contract
-  is a bug to report, not a rule to follow.
-- Report every assumption made where the docs were silent (`AGENTS.md` §7). Those reports
-  are how the specification gets fixed.
+Repository rules live in the imported specification, not here. This file holds only what
+is specific to Claude Code (ADR-0004).

@@ -72,6 +72,17 @@ for p in md:
                        for h in headings[doc]):
                 bad.append(f'{p}:{n} -> {doc} has no section "{sec}"')
 
+# Bare ADR references — "(ADR-0004)" — must resolve to a file in decisions/.
+adr_files = {f.name for f in (docs / "decisions").glob("ADR-*.md")}
+adr_ref = re.compile(r'\bADR-(\d{4})\b')
+for p in md:
+    if p.parent.name == "decisions":
+        continue  # an ADR may reference its own number in its title
+    for n, line in live_lines(p):
+        for num in adr_ref.findall(line):
+            if not any(f.startswith(f"ADR-{num}") for f in adr_files):
+                bad.append(f"{p}:{n} -> ADR-{num} does not exist")
+
 path_ref = re.compile(r'`((?:contracts|decisions|reference)/[A-Za-z0-9._-]+)`')
 for p in md:
     for n, line in live_lines(p):

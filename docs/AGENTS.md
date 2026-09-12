@@ -34,12 +34,9 @@ hand. Do not guess a platform and do not begin implementation.
 4. **In `multi` mode only:** exactly one overlay from `docs/platforms/`.
 5. Any `contracts/` file referenced by the docs you just read.
 
-Do not read every document for every task. Do not read a second overlay.
-
-Nothing enforces this table. No tool checks that you consulted it, and an agent that reads
-everything will produce work that looks the same as one that routed correctly — until the
-context it wasted is context it needed. Treat it as binding anyway. When a task genuinely
-spans the whole set, say so in your report (§7) rather than routing to everything silently.
+Do not read every document for every task. Do not read a second overlay. Nothing enforces
+this; treat it as binding anyway (ADR-0004). If a task genuinely spans the whole set, say so
+in your report (§7).
 
 ### Routing table
 
@@ -65,9 +62,8 @@ spans the whole set, say so in your report (§7) rather than routing to everythi
 When two sources disagree, the higher entry wins:
 
 1. A direct instruction from the human in the current conversation.
-2. `contracts/` — machine-readable files are the source of truth for their subject.
-   If `openapi.yaml` and prose in `04-networking.md` conflict, the schema wins and
-   the prose is a bug. Report it.
+2. `contracts/` — the source of truth for their subject. Where a contract and prose
+   conflict, the contract wins and the prose is a bug. Report it (§7).
 3. The loaded platform overlay, **but only where it declares an override by name**
    (see §4).
 4. Core docs `01`–`07`, which rank equally with each other. Where two of them cover the
@@ -93,9 +89,8 @@ the owner wins and the other is a bug to report (§7).
 A collision not listed here is a gap in this table, not a licence to choose. Follow the doc
 whose routing-table entry (§2) matches your task, and report the collision (§7).
 
-Nothing in this repository is an invitation to improvise. If a needed decision is
-absent from all of the above, stop and ask. A wrong guess written into code costs
-more than a question.
+If a needed decision is absent from all of the above, stop and ask. Do not improvise
+(ADR-0004).
 
 ---
 
@@ -122,14 +117,11 @@ diverge from the core.
 - `docs/contracts/` (with the change called out in your summary, since every other
   platform is affected)
 
-Modifying another platform's source tree requires stopping and asking first, even
-when the change is small, obviously correct, or would make your own change cleaner.
-"I refactored the shared helper while I was in there" is the failure this rule exists
-to prevent.
+Modifying another platform's source tree requires stopping and asking first, however small
+or obviously correct the change (ADR-0004).
 
-**Overlays may not reference each other.** No "same as web, except…". If a rule holds
-for more than one platform, move it into the core doc. This is what stops two overlays
-from silently becoming two independent, drifting specifications.
+**Overlays may not reference each other.** No "same as web, except…". If a rule holds for
+more than one platform, move it into the core doc (ADR-0004).
 
 ---
 
