@@ -3,6 +3,26 @@
 Structure and dependency rules. Claims above the bindings section are intended to hold
 for any client of this product.
 
+## Stack
+
+The language, runtime, and framework everything else assumes. Record what you chose and
+the constraint that forced it — a choice with no stated reason gets relitigated every time
+someone new arrives, agent or human.
+
+`decisions/ADR-0003` describes how to select one if the choice is still open. Once made,
+the answer lives here and the ADR is only rationale.
+
+<!-- FILL: language, runtime, framework, and the one constraint that decided it. Name the
+constraint, not the preference: "non-technical editors need a draft preview" is a reason,
+"it is the modern choice" is not. If a serious alternative was rejected, say which and why
+in one line, or an agent will propose it again. -->
+
+| Choice | What | Because |
+| ------ | ---- | ------- |
+| Language / runtime |  |  |
+| Framework |  |  |
+| Rejected alternative |  |  |
+
 ## Shape
 
 <!-- FILL: name the pattern and its layers in one short list. Do not describe an

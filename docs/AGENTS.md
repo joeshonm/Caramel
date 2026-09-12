@@ -42,6 +42,7 @@ Do not read every document for every task. Do not read a second overlay.
 | ----------------------------------------------------- | --------------------------------------------- |
 | Scope, priorities, "should we build X"                | `01-product.md`                               |
 | Layers, modules, dependency direction, new subsystem  | `02-architecture.md`                          |
+| Choosing a language, runtime, or framework            | `02-architecture.md` §Stack; `decisions/ADR-0003` if the choice is still open |
 | Domain types, persistence, caching, state ownership   | `03-data.md`, `contracts/schema.sql`          |
 | API calls, auth, errors, retries, offline             | `04-networking.md`, `contracts/openapi.yaml`, `contracts/errors.md` |
 | Any user-visible surface, styling, copy               | `05-design.md`, `contracts/tokens.json`       |
